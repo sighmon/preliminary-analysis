@@ -8,8 +8,9 @@ WC = Warrant Canary
 **Solution**: Host your WC in a DNS TXT record.
 
 **Issues to resolve**
-- Due to TTL of DNS record and older response may be supplied, DNS queries should always be performed ignoring TTL or work on a 1/2th of WC validity period for TTL and have a full DNS recheck performed if the WC has expired.
-
+* Due to TTL of DNS record and older response may be supplied, DNS queries should always be performed ignoring TTL or work on a 1/2th of WC validity period for TTL and have a full DNS recheck performed if the WC has expired.
 * DNS TXT records wrap every 255 characters in quotes.
 * Warrant Canary needs to be base64’d first, then process only the 255 characters between the quote marks.
 * Maybe host a DNS creation service that lets users point to their warrant canary file and generates a subdomain and a DNS TXT record for them. i.e. [simonsigrecom.canarywatcher.com](https://simonsigrecom.canarywatcher.com)
+
+
