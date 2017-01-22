@@ -1,6 +1,6 @@
 # Store a warrant canary in DNS
 
-**Problem**: Allow a machine readable warrant canary to remain cached and available even if your website gets taken down or attacked.
+**Problem**: Allow a machine readable warrant canary to remain globally cached (TTLs that match warrant canary period) and therefore available even if your website is taken down or attacked.
 
 **Solution**: Host your warrant canary in a DNS TXT record.
 
