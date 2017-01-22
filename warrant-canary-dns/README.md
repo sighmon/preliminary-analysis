@@ -16,11 +16,11 @@ WC = Warrant Canary
 * Host a DNS creation service that lets users point to their warrant canary file and generates a subdomain and a DNS TXT record for them. i.e. [simonsigrecom.canarycache.org](https://simonsigrecom.canarycache.org)
 * Crowdfund the web service that allows users to add their WC files, and shows a diff history to highlight changes to the wording of canaries.
 
-**SS**
-[simon.sigre@duckula ~]$ dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 
-[simon.sigre@duckula ~]$ gpg --recv-keys 89BBF41FDC97AF5D
+**SS** | *nix
 
+```bash
 dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys || dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify
+```
 
 **SL** | macOS version
 ```bash
