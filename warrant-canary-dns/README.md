@@ -1,10 +1,14 @@
 # Store a warrant canary in DNS
 
-**Problem**: Allow a machine readable warrant canary to remain globally cached (TTLs that match warrant canary period) and therefore available even if your website is taken down or attacked.
+**Assumptions**
+WC = Warrant Canary
 
-**Solution**: Host your warrant canary in a DNS TXT record.
+**Problem**: Allow a machine readable warrant canary to remain globally cached (TTLs that match WC period) and therefore available even if your website is taken down or attacked.
+
+**Solution**: Host your WC in a DNS TXT record.
 
 **Issues to resolve**
+- Due to TTL of DNS record and older response may be supplied, DNS queries should always be performed ignoring TTL or work on a 1/2th of WC validity period for TTL and have a full DNS recheck performed if the WC has expired.
 
 * DNS TXT records wrap every 255 characters in quotes.
 * Warrant Canary needs to be base64’d first, then process only the 255 characters between the quote marks.
