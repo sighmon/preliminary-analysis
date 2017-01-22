@@ -13,4 +13,8 @@ WC = Warrant Canary
 * Warrant Canary needs to be base64’d first, then process only the 255 characters between the quote marks.
 * Maybe host a DNS creation service that lets users point to their warrant canary file and generates a subdomain and a DNS TXT record for them. i.e. [simonsigrecom.canarywatcher.com](https://simonsigrecom.canarywatcher.com)
 
+**SS**
+[simon.sigre@duckula ~]$ dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 
+[simon.sigre@duckula ~]$ gpg --recv-keys 89BBF41FDC97AF5D
 
+dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys || dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify
