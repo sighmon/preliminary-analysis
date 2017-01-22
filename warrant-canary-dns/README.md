@@ -21,3 +21,8 @@ WC = Warrant Canary
 [simon.sigre@duckula ~]$ gpg --recv-keys 89BBF41FDC97AF5D
 
 dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys || dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify
+
+**SL** | macOS version
+```bash
+dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -D | gpg --verify
+```
