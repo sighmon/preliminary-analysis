@@ -18,17 +18,28 @@ WC = Warrant Canary
 
 **SS** | *nix
 
-<<<<<<< Updated upstream
+Just verify:
+
 ```bash
 dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys || dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify
 ```
 
+Verify and display if valid:
+
+```bash
+[[ $(dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -d | gpg --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -d | gpg --verify 2>&1)  =~ "gpg: Good signature"  ]] && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | sed '/;;/d' | base64 -d
+```
+
 **SL** | macOS version
+
+Just verify:
+
 ```bash
 dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -D | gpg --verify
 ```
-=======
-[simon.sigre@duckula ~]$ dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify
 
-- if success
-[[ $(dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d | gpg2 --verify 2>&1)  =~ "gpg: Good signature"  ]] && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | base64 -d
+Verify and display if valid:
+
+```bash
+[[ $(dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -D | gpg --verify 2>&1  | awk -F " RSA key ID " '{print $2}' | xargs gpg --recv-keys && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' | sed 's/ //g' | sed '/;;/d' | base64 -D | gpg --verify 2>&1)  =~ "gpg: Good signature"  ]] && dig sighmoncom.simonsigre.com txt +short | sed 's/"//g' |  sed 's/ //g' | sed '/;;/d' | base64 -D
+```
